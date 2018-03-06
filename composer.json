@@ -36,7 +36,7 @@
             "Dds\\": "aliyun-php-sdk-dds/Dds",
             "Dm\\":"aliyun-php-sdk-dm/Dm",
             "Domain\\":"aliyun-php-sdk-domain/Domain",
-            "Domain_intl\\": "aliyun-php-sdk-domain_intl/",
+            "Domain_intl\\": "aliyun-php-sdk-domain_intl/Domain_intl",
             "Ecs\\":"aliyun-php-sdk-ecs/Ecs",
             "EHPC\\":"aliyun-php-sdk-ehpc/EHPC",
             "Ess\\":"aliyun-php-sdk-ess/Ess",
@@ -60,7 +60,7 @@
             "TeslaMaxCompute\\":"aliyun-php-sdk-teslamaxcompute/TeslaMaxCompute",
             "Ubsms\\":"aliyun-php-sdk-ubsms/Ubsms",
             "Vod\\":"aliyun-php-sdk-vod/Vod",
-            "Vpc\\": "aliyun-php-sdk-vpc/"
+            "Vpc\\": "aliyun-php-sdk-vpc/Vpc"
         }
     },
     "autoload-dev": {
