@@ -29,6 +29,8 @@ class DescribeImagesRequest extends \RpcAcsRequest
 
 	private  $tag4Value;
 
+	private  $actionType;
+
 	private  $resourceOwnerId;
 
 	private  $imageId;
@@ -36,8 +38,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 	private  $snapshotId;
 
 	private  $tag2Key;
-
-	private  $filter2Value;
 
 	private  $usage;
 
@@ -51,8 +51,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 
 	private  $isSupportIoOptimized;
 
-	private  $filter1Key;
-
 	private  $imageName;
 
 	private  $isSupportCloudinit;
@@ -65,6 +63,8 @@ class DescribeImagesRequest extends \RpcAcsRequest
 
 	private  $architecture;
 
+	private  $dryRun;
+
 	private  $tag5Key;
 
 	private  $resourceOwnerAccount;
@@ -73,17 +73,15 @@ class DescribeImagesRequest extends \RpcAcsRequest
 
 	private  $showExpired;
 
-	private  $filter1Value;
-
 	private  $oSType;
-
-	private  $filter2Key;
 
 	private  $ownerId;
 
 	private  $tag5Value;
 
 	private  $tag1Key;
+
+	private  $Filters;
 
 	private  $tag2Value;
 
@@ -98,6 +96,15 @@ class DescribeImagesRequest extends \RpcAcsRequest
 	public function setTag4Value($tag4Value) {
 		$this->tag4Value = $tag4Value;
 		$this->queryParameters["Tag.4.Value"]=$tag4Value;
+	}
+
+	public function getActionType() {
+		return $this->actionType;
+	}
+
+	public function setActionType($actionType) {
+		$this->actionType = $actionType;
+		$this->queryParameters["ActionType"]=$actionType;
 	}
 
 	public function getResourceOwnerId() {
@@ -134,15 +141,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 	public function setTag2Key($tag2Key) {
 		$this->tag2Key = $tag2Key;
 		$this->queryParameters["Tag.2.Key"]=$tag2Key;
-	}
-
-	public function getFilter2Value() {
-		return $this->filter2Value;
-	}
-
-	public function setFilter2Value($filter2Value) {
-		$this->filter2Value = $filter2Value;
-		$this->queryParameters["Filter.2.Value"]=$filter2Value;
 	}
 
 	public function getUsage() {
@@ -199,15 +197,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 		$this->queryParameters["IsSupportIoOptimized"]=$isSupportIoOptimized;
 	}
 
-	public function getFilter1Key() {
-		return $this->filter1Key;
-	}
-
-	public function setFilter1Key($filter1Key) {
-		$this->filter1Key = $filter1Key;
-		$this->queryParameters["Filter.1.Key"]=$filter1Key;
-	}
-
 	public function getImageName() {
 		return $this->imageName;
 	}
@@ -262,6 +251,15 @@ class DescribeImagesRequest extends \RpcAcsRequest
 		$this->queryParameters["Architecture"]=$architecture;
 	}
 
+	public function getDryRun() {
+		return $this->dryRun;
+	}
+
+	public function setDryRun($dryRun) {
+		$this->dryRun = $dryRun;
+		$this->queryParameters["DryRun"]=$dryRun;
+	}
+
 	public function getTag5Key() {
 		return $this->tag5Key;
 	}
@@ -298,15 +296,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 		$this->queryParameters["ShowExpired"]=$showExpired;
 	}
 
-	public function getFilter1Value() {
-		return $this->filter1Value;
-	}
-
-	public function setFilter1Value($filter1Value) {
-		$this->filter1Value = $filter1Value;
-		$this->queryParameters["Filter.1.Value"]=$filter1Value;
-	}
-
 	public function getOSType() {
 		return $this->oSType;
 	}
@@ -314,15 +303,6 @@ class DescribeImagesRequest extends \RpcAcsRequest
 	public function setOSType($oSType) {
 		$this->oSType = $oSType;
 		$this->queryParameters["OSType"]=$oSType;
-	}
-
-	public function getFilter2Key() {
-		return $this->filter2Key;
-	}
-
-	public function setFilter2Key($filter2Key) {
-		$this->filter2Key = $filter2Key;
-		$this->queryParameters["Filter.2.Key"]=$filter2Key;
 	}
 
 	public function getOwnerId() {
@@ -350,6 +330,19 @@ class DescribeImagesRequest extends \RpcAcsRequest
 	public function setTag1Key($tag1Key) {
 		$this->tag1Key = $tag1Key;
 		$this->queryParameters["Tag.1.Key"]=$tag1Key;
+	}
+
+	public function getFilters() {
+		return $this->Filters;
+	}
+
+	public function setFilters($Filters) {
+		$this->Filters = $Filters;
+		for ($i = 0; $i < count($Filters); $i ++) {	
+			$this->queryParameters['Filter.' . ($i + 1) . '.Key'] = $Filters[$i]['Key'];
+			$this->queryParameters['Filter.' . ($i + 1) . '.Value'] = $Filters[$i]['Value'];
+
+		}
 	}
 
 	public function getTag2Value() {

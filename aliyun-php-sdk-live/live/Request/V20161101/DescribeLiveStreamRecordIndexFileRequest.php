@@ -17,13 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Live\Request\V20161101;
+namespace live\Request\V20161101;
 
 class DescribeLiveStreamRecordIndexFileRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("live", "2016-11-01", "DescribeLiveStreamRecordIndexFile");
+		parent::__construct("live", "2016-11-01", "DescribeLiveStreamRecordIndexFile", "live", "openAPI");
 		$this->setMethod("POST");
 	}
 

@@ -23,20 +23,30 @@ class ListAlarmHistoryRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("Cms", "2017-03-01", "ListAlarmHistory");
+		parent::__construct("Cms", "2017-03-01", "ListAlarmHistory", "cms", "openAPI");
+		$this->setMethod("POST");
 	}
+
+	private  $cursor;
 
 	private  $callby_cms_owner;
 
-	private  $id;
-
 	private  $size;
-
-	private  $startTime;
 
 	private  $endTime;
 
-	private  $cursor;
+	private  $id;
+
+	private  $startTime;
+
+	public function getCursor() {
+		return $this->cursor;
+	}
+
+	public function setCursor($cursor) {
+		$this->cursor = $cursor;
+		$this->queryParameters["Cursor"]=$cursor;
+	}
 
 	public function getcallby_cms_owner() {
 		return $this->callby_cms_owner;
@@ -45,15 +55,6 @@ class ListAlarmHistoryRequest extends \RpcAcsRequest
 	public function setcallby_cms_owner($callby_cms_owner) {
 		$this->callby_cms_owner = $callby_cms_owner;
 		$this->queryParameters["callby_cms_owner"]=$callby_cms_owner;
-	}
-
-	public function getId() {
-		return $this->id;
-	}
-
-	public function setId($id) {
-		$this->id = $id;
-		$this->queryParameters["Id"]=$id;
 	}
 
 	public function getSize() {
@@ -65,15 +66,6 @@ class ListAlarmHistoryRequest extends \RpcAcsRequest
 		$this->queryParameters["Size"]=$size;
 	}
 
-	public function getStartTime() {
-		return $this->startTime;
-	}
-
-	public function setStartTime($startTime) {
-		$this->startTime = $startTime;
-		$this->queryParameters["StartTime"]=$startTime;
-	}
-
 	public function getEndTime() {
 		return $this->endTime;
 	}
@@ -83,13 +75,22 @@ class ListAlarmHistoryRequest extends \RpcAcsRequest
 		$this->queryParameters["EndTime"]=$endTime;
 	}
 
-	public function getCursor() {
-		return $this->cursor;
+	public function getId() {
+		return $this->id;
 	}
 
-	public function setCursor($cursor) {
-		$this->cursor = $cursor;
-		$this->queryParameters["Cursor"]=$cursor;
+	public function setId($id) {
+		$this->id = $id;
+		$this->queryParameters["Id"]=$id;
+	}
+
+	public function getStartTime() {
+		return $this->startTime;
+	}
+
+	public function setStartTime($startTime) {
+		$this->startTime = $startTime;
+		$this->queryParameters["StartTime"]=$startTime;
 	}
 	
 }

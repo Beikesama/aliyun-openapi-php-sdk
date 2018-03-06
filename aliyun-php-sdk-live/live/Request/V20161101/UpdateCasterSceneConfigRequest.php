@@ -17,15 +17,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Live\Request\V20161101;
+namespace live\Request\V20161101;
 
 class UpdateCasterSceneConfigRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("live", "2016-11-01", "UpdateCasterSceneConfig");
+		parent::__construct("live", "2016-11-01", "UpdateCasterSceneConfig", "live", "openAPI");
 		$this->setMethod("POST");
 	}
+
+	private  $ComponentIds;
 
 	private  $securityToken;
 
@@ -38,6 +40,17 @@ class UpdateCasterSceneConfigRequest extends \RpcAcsRequest
 	private  $version;
 
 	private  $layoutId;
+
+	public function getComponentIds() {
+		return $this->ComponentIds;
+	}
+
+	public function setComponentIds($ComponentIds) {
+		$this->ComponentIds = $ComponentIds;
+		for ($i = 0; $i < count($ComponentIds); $i ++) {	
+			$this->queryParameters["ComponentId.".($i+1)] = $ComponentIds[$i];
+		}
+	}
 
 	public function getSecurityToken() {
 		return $this->securityToken;

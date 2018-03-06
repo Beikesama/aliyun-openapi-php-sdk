@@ -23,20 +23,34 @@ class ProfileSetRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("Cms", "2017-03-01", "ProfileSet");
+		parent::__construct("Cms", "2017-03-01", "ProfileSet", "cms", "openAPI");
+		$this->setMethod("POST");
 	}
 
-	private  $userId;
+	private  $enableInstallAgentNewECS;
+
+	private  $enableActiveAlert;
 
 	private  $autoInstall;
 
-	public function getUserId() {
-		return $this->userId;
+	private  $userId;
+
+	public function getEnableInstallAgentNewECS() {
+		return $this->enableInstallAgentNewECS;
 	}
 
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		$this->queryParameters["UserId"]=$userId;
+	public function setEnableInstallAgentNewECS($enableInstallAgentNewECS) {
+		$this->enableInstallAgentNewECS = $enableInstallAgentNewECS;
+		$this->queryParameters["EnableInstallAgentNewECS"]=$enableInstallAgentNewECS;
+	}
+
+	public function getEnableActiveAlert() {
+		return $this->enableActiveAlert;
+	}
+
+	public function setEnableActiveAlert($enableActiveAlert) {
+		$this->enableActiveAlert = $enableActiveAlert;
+		$this->queryParameters["EnableActiveAlert"]=$enableActiveAlert;
 	}
 
 	public function getAutoInstall() {
@@ -46,6 +60,15 @@ class ProfileSetRequest extends \RpcAcsRequest
 	public function setAutoInstall($autoInstall) {
 		$this->autoInstall = $autoInstall;
 		$this->queryParameters["AutoInstall"]=$autoInstall;
+	}
+
+	public function getUserId() {
+		return $this->userId;
+	}
+
+	public function setUserId($userId) {
+		$this->userId = $userId;
+		$this->queryParameters["UserId"]=$userId;
 	}
 	
 }

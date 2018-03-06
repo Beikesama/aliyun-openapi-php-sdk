@@ -17,15 +17,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Live\Request\V20161101;
+namespace live\Request\V20161101;
 
 class SetCasterConfigRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("live", "2016-11-01", "SetCasterConfig");
+		parent::__construct("live", "2016-11-01", "SetCasterConfig", "live", "openAPI");
 		$this->setMethod("POST");
 	}
+
+	private  $sideOutputUrl;
+
+	private  $casterId;
+
+	private  $domainName;
+
+	private  $ownerId;
+
+	private  $version;
+
+	private  $recordConfig;
 
 	private  $urgentMaterialId;
 
@@ -37,15 +49,61 @@ class SetCasterConfigRequest extends \RpcAcsRequest
 
 	private  $casterName;
 
-	private  $casterId;
+	private  $callbackUrl;
 
-	private  $domainName;
+	public function getSideOutputUrl() {
+		return $this->sideOutputUrl;
+	}
 
-	private  $ownerId;
+	public function setSideOutputUrl($sideOutputUrl) {
+		$this->sideOutputUrl = $sideOutputUrl;
+		$this->queryParameters["SideOutputUrl"]=$sideOutputUrl;
+	}
 
-	private  $version;
+	public function getCasterId() {
+		return $this->casterId;
+	}
 
-	private  $recordConfig;
+	public function setCasterId($casterId) {
+		$this->casterId = $casterId;
+		$this->queryParameters["CasterId"]=$casterId;
+	}
+
+	public function getDomainName() {
+		return $this->domainName;
+	}
+
+	public function setDomainName($domainName) {
+		$this->domainName = $domainName;
+		$this->queryParameters["DomainName"]=$domainName;
+	}
+
+	public function getOwnerId() {
+		return $this->ownerId;
+	}
+
+	public function setOwnerId($ownerId) {
+		$this->ownerId = $ownerId;
+		$this->queryParameters["OwnerId"]=$ownerId;
+	}
+
+	public function getVersion() {
+		return $this->version;
+	}
+
+	public function setVersion($version) {
+		$this->version = $version;
+		$this->queryParameters["Version"]=$version;
+	}
+
+	public function getRecordConfig() {
+		return $this->recordConfig;
+	}
+
+	public function setRecordConfig($recordConfig) {
+		$this->recordConfig = $recordConfig;
+		$this->queryParameters["RecordConfig"]=$recordConfig;
+	}
 
 	public function getUrgentMaterialId() {
 		return $this->urgentMaterialId;
@@ -92,49 +150,13 @@ class SetCasterConfigRequest extends \RpcAcsRequest
 		$this->queryParameters["CasterName"]=$casterName;
 	}
 
-	public function getCasterId() {
-		return $this->casterId;
+	public function getCallbackUrl() {
+		return $this->callbackUrl;
 	}
 
-	public function setCasterId($casterId) {
-		$this->casterId = $casterId;
-		$this->queryParameters["CasterId"]=$casterId;
-	}
-
-	public function getDomainName() {
-		return $this->domainName;
-	}
-
-	public function setDomainName($domainName) {
-		$this->domainName = $domainName;
-		$this->queryParameters["DomainName"]=$domainName;
-	}
-
-	public function getOwnerId() {
-		return $this->ownerId;
-	}
-
-	public function setOwnerId($ownerId) {
-		$this->ownerId = $ownerId;
-		$this->queryParameters["OwnerId"]=$ownerId;
-	}
-
-	public function getVersion() {
-		return $this->version;
-	}
-
-	public function setVersion($version) {
-		$this->version = $version;
-		$this->queryParameters["Version"]=$version;
-	}
-
-	public function getRecordConfig() {
-		return $this->recordConfig;
-	}
-
-	public function setRecordConfig($recordConfig) {
-		$this->recordConfig = $recordConfig;
-		$this->queryParameters["RecordConfig"]=$recordConfig;
+	public function setCallbackUrl($callbackUrl) {
+		$this->callbackUrl = $callbackUrl;
+		$this->queryParameters["CallbackUrl"]=$callbackUrl;
 	}
 	
 }

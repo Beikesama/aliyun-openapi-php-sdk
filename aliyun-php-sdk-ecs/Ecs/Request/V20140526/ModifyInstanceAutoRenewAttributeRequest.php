@@ -39,6 +39,8 @@ class ModifyInstanceAutoRenewAttributeRequest extends \RpcAcsRequest
 
 	private  $ownerAccount;
 
+	private  $renewalStatus;
+
 	private  $ownerId;
 
 	public function getDuration() {
@@ -93,6 +95,15 @@ class ModifyInstanceAutoRenewAttributeRequest extends \RpcAcsRequest
 	public function setOwnerAccount($ownerAccount) {
 		$this->ownerAccount = $ownerAccount;
 		$this->queryParameters["OwnerAccount"]=$ownerAccount;
+	}
+
+	public function getRenewalStatus() {
+		return $this->renewalStatus;
+	}
+
+	public function setRenewalStatus($renewalStatus) {
+		$this->renewalStatus = $renewalStatus;
+		$this->queryParameters["RenewalStatus"]=$renewalStatus;
 	}
 
 	public function getOwnerId() {

@@ -17,13 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Live\Request\V20161101;
+namespace live\Request\V20161101;
 
 class DescribeCasterLayoutsRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("live", "2016-11-01", "DescribeCasterLayouts");
+		parent::__construct("live", "2016-11-01", "DescribeCasterLayouts", "live", "openAPI");
 		$this->setMethod("POST");
 	}
 
@@ -34,6 +34,8 @@ class DescribeCasterLayoutsRequest extends \RpcAcsRequest
 	private  $ownerId;
 
 	private  $version;
+
+	private  $layoutId;
 
 	public function getSecurityToken() {
 		return $this->securityToken;
@@ -69,6 +71,15 @@ class DescribeCasterLayoutsRequest extends \RpcAcsRequest
 	public function setVersion($version) {
 		$this->version = $version;
 		$this->queryParameters["Version"]=$version;
+	}
+
+	public function getLayoutId() {
+		return $this->layoutId;
+	}
+
+	public function setLayoutId($layoutId) {
+		$this->layoutId = $layoutId;
+		$this->queryParameters["LayoutId"]=$layoutId;
 	}
 	
 }
