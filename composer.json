@@ -44,7 +44,7 @@
             "Iot\\":"aliyun-php-sdk-iot/Iot",
             "jaq\\":"aliyun-php-sdk-jaq/jaq",
             "Kms\\":"aliyun-php-sdk-kms/Kms",
-            "live\\":"aliyun-php-sdk-live/Live",
+            "live\\":"aliyun-php-sdk-live/live",
             "Market\\":"aliyun-php-sdk-market/Market",
             "Mts\\":"aliyun-php-sdk-mts/Mts",
             "NAS\\":"aliyun-php-sdk-nas/NAS",
@@ -59,7 +59,7 @@
             "TeslaDam\\":"aliyun-php-sdk-tesladam/TeslaDam",
             "TeslaMaxCompute\\":"aliyun-php-sdk-teslamaxcompute/TeslaMaxCompute",
             "Ubsms\\":"aliyun-php-sdk-ubsms/Ubsms",
-            "Vod\\":"aliyun-php-sdk-vod/Vod",
+            "Vod\\":"aliyun-php-sdk-vod/vod",
             "Vpc\\": "aliyun-php-sdk-vpc/Vpc"
         }
     },
