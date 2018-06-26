@@ -53,7 +53,7 @@
             "R_kvstore\\":"aliyun-php-sdk-r-kvstore/R_kvstore",
             "Ram\\":"aliyun-php-sdk-ram/Ram",
             "Rds\\":"aliyun-php-sdk-rds/Rds",
-            "Sas_api\\":"aliyun-php-sdk-sap-api/Sas_api",
+            "Sas_api\\":"aliyun-php-sdk-sas-api/Sas_api",
             "Slb\\":"aliyun-php-sdk-slb/Slb",
             "Sts\\":"aliyun-php-sdk-sts/Sts",
             "TeslaDam\\":"aliyun-php-sdk-tesladam/TeslaDam",
