@@ -1,6 +1,6 @@
 */.settings/
 */.buildpath
 */.project
-.idea*
-
 aliyun-php-sdk-test/
+/vendor/
+aliyun-php-sdk-ess/.DS_Store

@@ -70,5 +70,14 @@ class DeleteCasterSceneConfigRequest extends \RpcAcsRequest
 		$this->type = $type;
 		$this->queryParameters["Type"]=$type;
 	}
+
+	public function getVersion() {
+		return $this->version;
+	}
+
+	public function setVersion($version) {
+		$this->version = $version;
+		$this->queryParameters["Version"]=$version;
+	}
 	
 }

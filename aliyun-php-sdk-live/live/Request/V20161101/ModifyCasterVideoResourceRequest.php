@@ -136,5 +136,14 @@ class ModifyCasterVideoResourceRequest extends \RpcAcsRequest
 		$this->materialId = $materialId;
 		$this->queryParameters["MaterialId"]=$materialId;
 	}
+
+	public function getVersion() {
+		return $this->version;
+	}
+
+	public function setVersion($version) {
+		$this->version = $version;
+		$this->queryParameters["Version"]=$version;
+	}
 	
 }

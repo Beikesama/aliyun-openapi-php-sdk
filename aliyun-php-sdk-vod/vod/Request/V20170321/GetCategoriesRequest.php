@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace vod\Request\V20170321;
+namespace Vod\Request\V20170321;
 
 class GetCategoriesRequest extends \RpcAcsRequest
 {
@@ -25,6 +25,7 @@ class GetCategoriesRequest extends \RpcAcsRequest
 	{
 		parent::__construct("vod", "2017-03-21", "GetCategories", "vod", "openAPI");
 		$this->setMethod("POST");
+<<<<<<< HEAD:aliyun-php-sdk-vod/vod/Request/V20170321/GetCategoriesRequest.php
 	}
 
 	private  $resourceOwnerId;
@@ -102,6 +103,85 @@ class GetCategoriesRequest extends \RpcAcsRequest
 	public function setOwnerId($ownerId) {
 		$this->ownerId = $ownerId;
 		$this->queryParameters["OwnerId"]=$ownerId;
+=======
+	}
+
+	private  $resourceOwnerId;
+
+	private  $resourceOwnerAccount;
+
+	private  $cateId;
+
+	private  $pageNo;
+
+	private  $ownerAccount;
+
+	private  $pageSize;
+
+	private  $ownerId;
+
+	public function getResourceOwnerId() {
+		return $this->resourceOwnerId;
+	}
+
+	public function setResourceOwnerId($resourceOwnerId) {
+		$this->resourceOwnerId = $resourceOwnerId;
+		$this->queryParameters["ResourceOwnerId"]=$resourceOwnerId;
+	}
+
+	public function getResourceOwnerAccount() {
+		return $this->resourceOwnerAccount;
+	}
+
+	public function setResourceOwnerAccount($resourceOwnerAccount) {
+		$this->resourceOwnerAccount = $resourceOwnerAccount;
+		$this->queryParameters["ResourceOwnerAccount"]=$resourceOwnerAccount;
+	}
+
+	public function getCateId() {
+		return $this->cateId;
+	}
+
+	public function setCateId($cateId) {
+		$this->cateId = $cateId;
+		$this->queryParameters["CateId"]=$cateId;
+	}
+
+	public function getPageNo() {
+		return $this->pageNo;
+	}
+
+	public function setPageNo($pageNo) {
+		$this->pageNo = $pageNo;
+		$this->queryParameters["PageNo"]=$pageNo;
+	}
+
+	public function getOwnerAccount() {
+		return $this->ownerAccount;
+	}
+
+	public function setOwnerAccount($ownerAccount) {
+		$this->ownerAccount = $ownerAccount;
+		$this->queryParameters["OwnerAccount"]=$ownerAccount;
+	}
+
+	public function getPageSize() {
+		return $this->pageSize;
+	}
+
+	public function setPageSize($pageSize) {
+		$this->pageSize = $pageSize;
+		$this->queryParameters["PageSize"]=$pageSize;
+	}
+
+	public function getOwnerId() {
+		return $this->ownerId;
+	}
+
+	public function setOwnerId($ownerId) {
+		$this->ownerId = $ownerId;
+		$this->queryParameters["OwnerId"]=$ownerId;
+>>>>>>> master:aliyun-php-sdk-vod/Vod/Request/V20170321/GetCategoriesRequest.php
 	}
 	
 }

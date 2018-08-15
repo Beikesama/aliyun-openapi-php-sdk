@@ -27,37 +27,36 @@ define("CACHE_EXPIRE_TIME", 3600);
 
 class DescribeEndpointRequest extends RpcAcsRequest
 {
-    function __construct($id, $serviceCode, $endPointType)
-    {
-        parent::__construct(LOCATION_SERVICE_PRODUCT_NAME, LOCATION_SERVICE_VERSION, LOCATION_SERVICE_DESCRIBE_ENDPOINT_ACTION);
+	function __construct($id, $serviceCode, $endPointType) {
+		parent::__construct(LOCATION_SERVICE_PRODUCT_NAME, LOCATION_SERVICE_VERSION, LOCATION_SERVICE_DESCRIBE_ENDPOINT_ACTION);
 
-        $this->queryParameters["Id"] = $id;
-        $this->queryParameters["ServiceCode"] = $serviceCode;
-        $this->queryParameters["Type"] = $endPointType;
-        $this->setRegionId(LOCATION_SERVICE_REGION);
+		$this->queryParameters["Id"] = $id;
+		$this->queryParameters["ServiceCode"] = $serviceCode;
+		$this->queryParameters["Type"] = $endPointType;
+		$this->setRegionId(LOCATION_SERVICE_REGION);
 
-        $this->setAcceptFormat("JSON");
-    }
+		$this->setAcceptFormat("JSON");
+	}
 }
 
 class LocationService
 {
-    private $clientProfile;
-    public static $cache = array();
-    public static $lastClearTimePerProduct = array();
-    public static $serviceDomain = LOCATION_SERVICE_DOMAIN;
+	private $clientProfile;
+	public static $cache = array();
+	public static $lastClearTimePerProduct = array();
+	public static $serviceDomain = LOCATION_SERVICE_DOMAIN;
 
-    function __construct($clientProfile)
-    {
-        $this->clientProfile = $clientProfile;
-    }
+	function __construct($clientProfile) {
+		$this->clientProfile = $clientProfile;
+	}
 
-    public function findProductDomain($regionId, $serviceCode, $endPointType, $product)
-    {
-        $key = $regionId . '#' . $product;
-        @$domain = self::$cache[$key];
-        if ($domain == null || $this->checkCacheIsExpire($key) == true) {
-            $domain = $this->findProductDomainFromLocationService($regionId, $serviceCode, $endPointType);
+	public function findProductDomain($regionId, $serviceCode, $endPointType, $product)
+	{
+		$key = $regionId.'#'.$product;
+        $domain = isset(self::$cache[$key]) ? self::$cache[$key] : null;
+		if ($domain == null || $this->checkCacheIsExpire($key) == true)
+		{
+			$domain = $this->findProductDomainFromLocationService($regionId, $serviceCode, $endPointType);
             self::$cache[$key] = $domain;
         }
 
@@ -79,8 +78,9 @@ class LocationService
 
     private function checkCacheIsExpire($key)
     {
-        $lastClearTime = self::$lastClearTimePerProduct[$key];
-        if ($lastClearTime == null) {
+        $lastClearTime = isset(self::$lastClearTimePerProduct[$key]) ? self::$lastClearTimePerProduct[$key] : null;
+        if ($lastClearTime == null)
+        {
             $lastClearTime = time();
             self::$lastClearTimePerProduct[$key] = $lastClearTime;
         }
@@ -97,22 +97,27 @@ class LocationService
         return false;
     }
 
-    private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType)
-    {
-        $request = new DescribeEndpointRequest($regionId, $serviceCode, $endPointType);
+	private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType)
+	{
+		$request = new DescribeEndpointRequest($regionId, $serviceCode, $endPointType);
 
-        $signer = $this->clientProfile->getSigner();
-        $credential = $this->clientProfile->getCredential();
+		$signer = $this->clientProfile->getSigner();
+		$credential = $this->clientProfile->getCredential();
 
-        $requestUrl = $request->composeUrl($signer, $credential, self::$serviceDomain);
+		$requestUrl = $request->composeUrl($signer, $credential, self::$serviceDomain);
 
-        $httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
+		$httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
 
-        if (!$httpResponse->isSuccess()) {
-            return null;
-        }
+		if (!$httpResponse->isSuccess())
+		{
+			return null;
+		}
 
         $respObj = json_decode($httpResponse->getBody());
-        return $respObj->Endpoints->Endpoint[0]->Endpoint;
-    }
+        if ($respObj->Endpoints->Endpoint) {
+            return $respObj->Endpoints->Endpoint[0]->Endpoint;
+        }
+
+        throw new ServerException("None endpoints with RegionId:{$regionId} ServiceCode:{$serviceCode} EndPointType:{$endPointType}", -1, $httpResponse->getStatus(), $respObj->RequestId);
+	}
 }

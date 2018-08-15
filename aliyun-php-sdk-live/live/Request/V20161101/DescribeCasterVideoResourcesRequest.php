@@ -48,5 +48,14 @@ class DescribeCasterVideoResourcesRequest extends \RpcAcsRequest
 		$this->ownerId = $ownerId;
 		$this->queryParameters["OwnerId"]=$ownerId;
 	}
+
+	public function getVersion() {
+		return $this->version;
+	}
+
+	public function setVersion($version) {
+		$this->version = $version;
+		$this->queryParameters["Version"]=$version;
+	}
 	
 }
