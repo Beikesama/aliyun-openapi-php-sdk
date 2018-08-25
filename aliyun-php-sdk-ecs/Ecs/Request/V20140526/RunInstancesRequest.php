@@ -63,6 +63,8 @@ class RunInstancesRequest extends \RpcAcsRequest
 
 	private  $spotStrategy;
 
+	private  $privateIpAddress;
+
 	private  $periodUnit;
 
 	private  $instanceName;
@@ -114,6 +116,8 @@ class RunInstancesRequest extends \RpcAcsRequest
 	private  $autoReleaseTime;
 
 	private  $dedicatedHostId;
+
+	private  $creditSpecification;
 
 	private  $DataDisks;
 
@@ -287,6 +291,15 @@ class RunInstancesRequest extends \RpcAcsRequest
 	public function setSpotStrategy($spotStrategy) {
 		$this->spotStrategy = $spotStrategy;
 		$this->queryParameters["SpotStrategy"]=$spotStrategy;
+	}
+
+	public function getPrivateIpAddress() {
+		return $this->privateIpAddress;
+	}
+
+	public function setPrivateIpAddress($privateIpAddress) {
+		$this->privateIpAddress = $privateIpAddress;
+		$this->queryParameters["PrivateIpAddress"]=$privateIpAddress;
 	}
 
 	public function getPeriodUnit() {
@@ -528,6 +541,15 @@ class RunInstancesRequest extends \RpcAcsRequest
 	public function setDedicatedHostId($dedicatedHostId) {
 		$this->dedicatedHostId = $dedicatedHostId;
 		$this->queryParameters["DedicatedHostId"]=$dedicatedHostId;
+	}
+
+	public function getCreditSpecification() {
+		return $this->creditSpecification;
+	}
+
+	public function setCreditSpecification($creditSpecification) {
+		$this->creditSpecification = $creditSpecification;
+		$this->queryParameters["CreditSpecification"]=$creditSpecification;
 	}
 
 	public function getDataDisks() {

@@ -31,6 +31,8 @@ class DeleteFaceSearchImageByIdRequest extends \RpcAcsRequest
 
 	private  $project;
 
+	private  $srcUri;
+
 	private  $groupName;
 
 	private  $user;
@@ -51,6 +53,15 @@ class DeleteFaceSearchImageByIdRequest extends \RpcAcsRequest
 	public function setProject($project) {
 		$this->project = $project;
 		$this->queryParameters["Project"]=$project;
+	}
+
+	public function getSrcUri() {
+		return $this->srcUri;
+	}
+
+	public function setSrcUri($srcUri) {
+		$this->srcUri = $srcUri;
+		$this->queryParameters["SrcUri"]=$srcUri;
 	}
 
 	public function getGroupName() {

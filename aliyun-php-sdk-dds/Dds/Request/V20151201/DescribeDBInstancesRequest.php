@@ -39,7 +39,11 @@ class DescribeDBInstancesRequest extends \RpcAcsRequest
 
 	private  $pageNumber;
 
+	private  $replicationFactor;
+
 	private  $dBInstanceType;
+
+	private  $expired;
 
 	private  $securityToken;
 
@@ -101,6 +105,15 @@ class DescribeDBInstancesRequest extends \RpcAcsRequest
 		$this->queryParameters["PageNumber"]=$pageNumber;
 	}
 
+	public function getReplicationFactor() {
+		return $this->replicationFactor;
+	}
+
+	public function setReplicationFactor($replicationFactor) {
+		$this->replicationFactor = $replicationFactor;
+		$this->queryParameters["ReplicationFactor"]=$replicationFactor;
+	}
+
 	public function getDBInstanceType() {
 		return $this->dBInstanceType;
 	}
@@ -108,6 +121,15 @@ class DescribeDBInstancesRequest extends \RpcAcsRequest
 	public function setDBInstanceType($dBInstanceType) {
 		$this->dBInstanceType = $dBInstanceType;
 		$this->queryParameters["DBInstanceType"]=$dBInstanceType;
+	}
+
+	public function getExpired() {
+		return $this->expired;
+	}
+
+	public function setExpired($expired) {
+		$this->expired = $expired;
+		$this->queryParameters["Expired"]=$expired;
 	}
 
 	public function getSecurityToken() {

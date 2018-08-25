@@ -35,6 +35,10 @@ class GetMezzanineInfoRequest extends \RpcAcsRequest
 
 	private  $previewSegment;
 
+	private  $outputType;
+
+	private  $additionType;
+
 	private  $ownerId;
 
 	private  $authTimeout;
@@ -73,6 +77,24 @@ class GetMezzanineInfoRequest extends \RpcAcsRequest
 	public function setPreviewSegment($previewSegment) {
 		$this->previewSegment = $previewSegment;
 		$this->queryParameters["PreviewSegment"]=$previewSegment;
+	}
+
+	public function getOutputType() {
+		return $this->outputType;
+	}
+
+	public function setOutputType($outputType) {
+		$this->outputType = $outputType;
+		$this->queryParameters["OutputType"]=$outputType;
+	}
+
+	public function getAdditionType() {
+		return $this->additionType;
+	}
+
+	public function setAdditionType($additionType) {
+		$this->additionType = $additionType;
+		$this->queryParameters["AdditionType"]=$additionType;
 	}
 
 	public function getOwnerId() {
